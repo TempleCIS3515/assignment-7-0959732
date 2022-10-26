@@ -8,6 +8,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Set the title for the activity.
+        supportActionBar?.title = "FlossPlayer"
 
         var object1 = BookList("Colleen Hoover", "Reminders of Him")
         var object2 = BookList("Jess Kidd", "Himself")
