@@ -1,6 +1,6 @@
 package edu.temple.flossplayer
 
-class BookList(author: String, title: String) : Book(author, title) {
+class BookList(author: String, title: String) {
 
     fun add(book: Book): Void {
 
