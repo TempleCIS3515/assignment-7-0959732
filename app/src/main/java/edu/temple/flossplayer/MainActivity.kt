@@ -12,6 +12,12 @@ class MainActivity : AppCompatActivity() {
         // Set the title for the activity.
         supportActionBar?.title = "FlossPlayer"
 
+
+
+//        object {
+//          fun getInstance (index : String) : BookList {
+
+
         //instance of BookList class
         val myBooklist = BookList("Colleen Hoover", "Reminders of Him")
         myBooklist.add("Jess Kidd","Himself")
@@ -25,15 +31,25 @@ class MainActivity : AppCompatActivity() {
         myBooklist.add("Mariana Zapata", "All Rhoades Lead Here")
 
 
+        val bookListFragment = BookListFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.container_1, bookListFragment).commit()
+
+        }
+
+
     }
 
     override fun BookSelected() {
-        if (findViewById<View>(R.id.container2) == null) 
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container_1, BookListFragment())
-                .addToBackStack(null)
-                .commit()
+
+        val bundle = Bundle()
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val bookFragment = BookFragment()
+        bookFragment.arguments = bundle
+
+        transaction.replace(R.id.container_2, bookFragment)
+        transaction.commit()
+
+
     }
 
 
@@ -48,15 +64,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
-}
 
 
 
-
-
-
-
-}
 
 
 

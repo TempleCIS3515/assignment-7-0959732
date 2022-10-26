@@ -1,12 +1,15 @@
 package edu.temple.flossplayer
 
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class BookPlayerFragment : Fragment() {
+
+class BookPlayerFragment : BookFragment() { //this is a child fragment
+
+    private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,4 +26,25 @@ class BookPlayerFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_book_player, container, false)
     }
 
+            override fun onAttach(context: Context) {
+                super.(context)
+                if (context is OnFragmentInteractionListener) {
+                    mListener = context as OnFragmentInteractionListener
+                } else {
+                    throw RuntimeException(
+                        context.toString()
+                                + " must implement OnFragmentInteractionListener"
+                    )
+                }
+            }
+
+                    override fun onDetach() {
+                        super.onDetach()
+                        mListener = null
+                    }
+
+
+                            interface OnFragmentInteractionListener {
+                                fun messageFromChildFragment(uri: Uri?)
+                            }
 }
