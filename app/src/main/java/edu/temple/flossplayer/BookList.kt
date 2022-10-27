@@ -1,25 +1,24 @@
 package edu.temple.flossplayer
 
-class BookList(author: String, title: String) {
+class BookList() {
 
     //book objects using an ArrayList
     val arrayBookList = ArrayList<Book>()
 
-
-    fun add(author: String, book: String) {
-
+    fun add(book: Book) {
+        arrayBookList.add(book)
     }
 
     fun remove(book: Book){
-
+       arrayBookList.remove(book)
     }
 
-    fun get(int: Int) {
-
+    fun get(int: Int): Book {
+        return arrayBookList.get(int)
     }
 
-    fun size(){
-
+    fun size(): Int{
+        return arrayBookList.size
     }
 
 

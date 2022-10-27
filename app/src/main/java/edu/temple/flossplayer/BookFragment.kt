@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-open class BookFragment : Fragment() { //this is parent fragment
+open class BookFragment : Fragment() { //this is child fragment
 
     lateinit var title_textView: TextView
     lateinit var author_textView: TextView

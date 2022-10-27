@@ -19,16 +19,17 @@ class MainActivity : AppCompatActivity() {
 
 
         //instance of BookList class
-        val myBooklist = BookList("Colleen Hoover", "Reminders of Him")
-        myBooklist.add("Jess Kidd","Himself")
-        myBooklist.add("Armando Lucas Correa", "The Daughter's Tales")
-        myBooklist.add("Megan Miranda", "All the Missing Girls")
-        myBooklist.add("Sally Rooney", "Normal People")
-        myBooklist.add("Lisa Jewell", "The Family Upstairs")
-        myBooklist.add("Jeanine Cummins", "The Outside Boy")
-        myBooklist.add("Rebecca Serle", "The Dinner List")
-        myBooklist.add("Kim Liggett", "The Grace Year")
-        myBooklist.add("Mariana Zapata", "All Rhoades Lead Here")
+        val myBooklist = BookList()
+        myBooklist.add(Book("Colleen Hoover", "Reminders of Him"))
+        myBooklist.add(Book("Jess Kidd","Himself"))
+        myBooklist.add(Book("Armando Lucas Correa", "The Daughter's Tales"))
+        myBooklist.add(Book("Megan Miranda", "All the Missing Girls"))
+        myBooklist.add(Book("Sally Rooney", "Normal People"))
+        myBooklist.add(Book("Lisa Jewell", "The Family Upstairs"))
+        myBooklist.add(Book("Jeanine Cummins", "The Outside Boy"))
+        myBooklist.add(Book("Rebecca Serle", "The Dinner List"))
+        myBooklist.add(Book("Kim Liggett", "The Grace Year"))
+        myBooklist.add(Book("Mariana Zapata", "All Rhoades Lead Here"))
 
 
         val bookListFragment = BookListFragment()
