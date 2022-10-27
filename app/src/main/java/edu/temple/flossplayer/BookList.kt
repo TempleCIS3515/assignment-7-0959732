@@ -13,7 +13,7 @@ class BookList() {
        arrayBookList.remove(book)
     }
 
-    fun get(int: Int): Book {
+    operator fun get(int: Int): Book {
         return arrayBookList[int]
     }
 

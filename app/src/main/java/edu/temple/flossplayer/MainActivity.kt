@@ -3,11 +3,21 @@ package edu.temple.flossplayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var bookViewModel: BookViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        object
+        {
+            val ITEM_KEY = "key"
+        }
+
 
         // Set the title for the activity.
         supportActionBar?.title = "FlossPlayer"
@@ -26,25 +36,20 @@ class MainActivity : AppCompatActivity() {
         myBooklist.add(Book("Kim Liggett", "The Grace Year"))
         myBooklist.add(Book("Mariana Zapata", "All Rhoades Lead Here"))
 
+        bookViewModel = ViewModelProvider(this)[BookViewModel::class.java]
+        bookViewModel.booklist = myBooklist
 
         val bookListFragment = BookListFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.container_1, bookListFragment).commit()
-
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container_1, bookListFragment)
+            .commit()
         }
 
     }
 
-     fun BookSelected() {
 
-        val bundle = Bundle()
-        val transaction = this.supportFragmentManager.beginTransaction()
-        val bookFragment = BookFragment()
-        bookFragment.arguments = bundle
 
-        transaction.replace(R.id.container_2, bookFragment)
-        transaction.commit()
-
-    }
 
 
 

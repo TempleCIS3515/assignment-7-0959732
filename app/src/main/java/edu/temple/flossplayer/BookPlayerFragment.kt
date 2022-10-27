@@ -5,50 +5,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 
 
-class BookPlayerFragment : BookFragment() { //this is a parent fragment
+class BookPlayerFragment : Fragment() { //this is a parent fragment
 
-   // private var mListener: OnFragmentInteractionListener? = null
+    //private val viewModel: BookViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
         }
+
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.container_1, BookFragment())
+            .commit()
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_book_player, container, false)
     }
-
-    getChildFragmentManager()
-
-
-//
-//            override fun onAttach(context: Context) {
-//                super.(context)
-//                if (context is OnFragmentInteractionListener) {
-//                    mListener = context as OnFragmentInteractionListener
-//                } else {
-//                    throw RuntimeException(
-//                        context.toString()
-//                                + " must implement OnFragmentInteractionListener"
-//                    )
-//                }
-//            }
-//
-//                    override fun onDetach() {
-//                        super.onDetach()
-//                        mListener = null
-//                    }
-//
-//
-//                            interface OnFragmentInteractionListener {
-//                                fun messageFromChildFragment(uri: Uri?)
-//                            }
-//}
+}

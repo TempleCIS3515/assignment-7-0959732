@@ -1,6 +1,5 @@
 package edu.temple.flossplayer
 
-import android.app.FragmentTransaction
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +11,8 @@ open class BookFragment : Fragment() { //this is child fragment
 
     lateinit var title_textView: TextView
     lateinit var author_textView: TextView
+
+    //private val viewModel: BookViewModel by BookPlayerFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,16 +28,6 @@ open class BookFragment : Fragment() { //this is child fragment
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_book, container, false)
 
-
-
-
-//            var childFragment: ChildFragment()
-//            FragmentTransaction transaction = getChildFragmentManager()
-//                .beginTransaction()
-//            transaction.replace(R.id.BookPlayerFragment, childFragment)
-//                .commit()
-
-        }
 
     }
 

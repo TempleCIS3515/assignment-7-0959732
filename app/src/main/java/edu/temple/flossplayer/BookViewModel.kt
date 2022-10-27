@@ -9,6 +9,8 @@ class BookViewModel : ViewModel() {
     val selectedBook : MutableLiveData<BookList> by lazy {
         MutableLiveData<BookList>()
     }
+    lateinit var booklist: BookList
+
 
     fun setSelectedBook(book: BookList) {
 

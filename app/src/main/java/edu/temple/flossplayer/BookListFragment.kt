@@ -6,18 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class BookListFragment : Fragment() {
 
-    lateinit var recyclerView : RecyclerView
-    private lateinit var bookViewModel: BookViewModel
+    lateinit var recyclerView: RecyclerView
+    //private lateinit var bookViewModel: BookViewModel
+    private val ITEM_KEY = "books"
+    lateinit var book: Array<BookList>
+    var onClick = {book: Book ->
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //view model
-        bookViewModel = ViewModelProvider(requireActivity()).get(BookViewModel::class.java)
+        //bookViewModel = ViewModelProvider(requireActivity()).get(BookViewModel::class.java)
 
         arguments?.let {
         }
@@ -30,15 +36,19 @@ class BookListFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_book_list, container, false).also {
             //recycler view
-            recyclerView.findViewById<RecyclerView>(R.id.booklist_recyclerView)
-        }
+            recyclerView = it.findViewById<RecyclerView>(R.id.booklist_recyclerView)
 
+            // to layout manager
+            recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
+            // to image adapter
+            recyclerView.adapter = BookAdapter((requireActivity()as MainActivity).bookViewModel.booklist,onClick)
+        }
     }
 
-
-//needed?
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-    {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val clickEvent = { book:Book -> BookViewModel() }
+
+        val clickEvent = { book: Book -> BookViewModel()}
+
+    }
 }
