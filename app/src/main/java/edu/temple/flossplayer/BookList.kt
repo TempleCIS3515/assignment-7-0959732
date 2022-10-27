@@ -14,7 +14,7 @@ class BookList() {
     }
 
     fun get(int: Int): Book {
-        return arrayBookList.get(int)
+        return arrayBookList[int]
     }
 
     fun size(): Int{

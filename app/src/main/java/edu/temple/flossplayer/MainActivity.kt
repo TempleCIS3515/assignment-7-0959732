@@ -13,11 +13,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "FlossPlayer"
 
 
-
-//        object {
-//          fun getInstance (index : String) : BookList {
-
-
         //instance of BookList class
         val myBooklist = BookList()
         myBooklist.add(Book("Colleen Hoover", "Reminders of Him"))
@@ -37,10 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
     }
 
-    override fun BookSelected() {
+     fun BookSelected() {
 
         val bundle = Bundle()
         val transaction = this.supportFragmentManager.beginTransaction()
@@ -49,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
         transaction.replace(R.id.container_2, bookFragment)
         transaction.commit()
-
 
     }
 
