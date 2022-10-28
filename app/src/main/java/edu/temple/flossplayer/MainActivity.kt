@@ -13,8 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        object
-        {
+        object {
             val ITEM_KEY = "key"
         }
 
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         //instance of BookList class
         val myBooklist = BookList()
         myBooklist.add(Book("Colleen Hoover", "Reminders of Him"))
-        myBooklist.add(Book("Jess Kidd","Himself"))
+        myBooklist.add(Book("Jess Kidd", "Himself"))
         myBooklist.add(Book("Armando Lucas Correa", "The Daughter's Tales"))
         myBooklist.add(Book("Megan Miranda", "All the Missing Girls"))
         myBooklist.add(Book("Sally Rooney", "Normal People"))
@@ -44,44 +43,18 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.container_1, bookListFragment)
             .commit()
-        }
-
-
-
     }
 
+    fun BookSelected() {
+        if (findViewById<View>(R.id.container_2) == null)
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_1, BookPlayerFragment())
+                .addToBackStack(null)
+                .commit()
+    }
+
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    override fun onBackPressed() { //WHEN BACK arrow is pressed
-//        //clear selected state
-//        super.onBackPressed()
-//    }
