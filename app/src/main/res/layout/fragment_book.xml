@@ -10,12 +10,12 @@
 
     <TextView
         android:id="@+id/title_textView"
-        android:layout_width="213dp"
-        android:layout_height="78dp"
+        android:layout_width="393dp"
+        android:layout_height="208dp"
         android:layout_marginTop="68dp"
         android:text="title"
         android:textAlignment="center"
-        android:textSize="60sp"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/author_textView"
-        android:layout_width="136dp"
-        android:layout_height="25dp"
+        android:layout_width="350dp"
+        android:layout_height="46dp"
         android:text="author"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"

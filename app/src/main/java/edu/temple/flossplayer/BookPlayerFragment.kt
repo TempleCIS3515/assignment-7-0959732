@@ -17,12 +17,6 @@ class BookPlayerFragment : Fragment() { //this is a parent fragment
         arguments?.let {
 
         }
-
-        childFragmentManager
-            .beginTransaction()
-            .add(R.id.container_1, BookFragment())
-            .commit()
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
