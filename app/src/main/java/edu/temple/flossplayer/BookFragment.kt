@@ -16,13 +16,17 @@ open class BookFragment : Fragment() { //this is child fragment
     lateinit var author_textView: TextView
     lateinit var  bookViewModel: BookViewModel
 
-    //private val viewModel: BookViewModel by BookPlayerFragment()
+    //private val viewModel: BookViewModel by
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             bookViewModel = ViewModelProvider(MainActivity()).get(BookViewModel::class.java)
         }
+    }
+
+    fun onItemClicked(book: BookList) {
+        bookViewModel.SelectedBook(book)
     }
 
     override fun onCreateView(
@@ -40,6 +44,9 @@ open class BookFragment : Fragment() { //this is child fragment
 
         bookViewModel.getSelectedBook().observe(MainActivity()) {
 
+//            fun onItemClicked(book: BookList) {
+//                bookViewModel.SelectedBook(book)
+//            }
 //            childFragmentManager.beginTransaction()
 //                .replace(R.id.fragmentContainerView2, BookPlayerFragment())
 //                .commit()

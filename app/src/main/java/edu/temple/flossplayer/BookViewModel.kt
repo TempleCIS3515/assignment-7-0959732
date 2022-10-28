@@ -12,12 +12,12 @@ class BookViewModel : ViewModel() {
     lateinit var booklist: BookList
 
 
-    fun setSelectedBook(book: BookList) {
+    fun SelectedBook(book: BookList) {
 
         selectedBook.value = book
     }
 
-    fun getSelectedBook() : LiveData<BookList> {
+    fun getSelectedBook() : LiveData<BookList>{
         return selectedBook
     }
 }
