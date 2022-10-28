@@ -40,9 +40,9 @@ open class BookFragment : Fragment() { //this is child fragment
 
         bookViewModel.getSelectedBook().observe(MainActivity()) {
 
-            childFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView2, BookPlayerFragment())
-                .commit()
+//            childFragmentManager.beginTransaction()
+//                .replace(R.id.fragmentContainerView2, BookPlayerFragment())
+//                .commit()
         }
 
     }
