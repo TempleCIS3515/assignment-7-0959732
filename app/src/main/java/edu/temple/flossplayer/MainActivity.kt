@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onBookSelected() {
+    override fun onBookSelected() {
         if (!landscape) {
             supportFragmentManager
                 .beginTransaction()
