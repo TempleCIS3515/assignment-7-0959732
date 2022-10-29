@@ -1,19 +1,20 @@
 package edu.temple.flossplayer
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var bookViewModel: BookViewModel
+    var landscape = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        landscape = (findViewById<FragmentContainerView>(R.id.container_2) != null)
         //bookViewModel.SelectedBook(this,
 
         object {
@@ -41,23 +42,31 @@ class MainActivity : AppCompatActivity() {
         bookViewModel = ViewModelProvider(this)[BookViewModel::class.java]
         bookViewModel.booklist = myBooklist
 
-        val bookListFragment = BookListFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container_1, bookListFragment)
-            .commit()
-    }
-
-    fun BookSelected() {
-        if (findViewById<View>(R.id.container_2) == null)
+        if (savedInstanceState == null) {
+            val bookListFragment = BookListFragment()
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.container_1, BookPlayerFragment())
-                .addToBackStack(null)
+                .add(R.id.container_1, bookListFragment)
                 .commit()
+        }
     }
 
-}
+    fun onBookSelected() {
+        if (!landscape) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_2, BookPlayerFragment())
+                .commit()
+        }
+    }
+
+
+        interface BookSelection {
+            fun onBookSelected()
+        }
+    }
+
+
 
 
 

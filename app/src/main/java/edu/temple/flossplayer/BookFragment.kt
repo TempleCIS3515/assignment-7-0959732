@@ -21,7 +21,7 @@ open class BookFragment : Fragment() { //this is child fragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            bookViewModel = ViewModelProvider(MainActivity()).get(BookViewModel::class.java)
+            bookViewModel = ViewModelProvider(requireActivity())[(BookViewModel::class.java)]
         }
     }
 
@@ -34,24 +34,25 @@ open class BookFragment : Fragment() { //this is child fragment
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book, container, false)
+        return inflater.inflate(R.layout.fragment_book, container, false).also {
+            val title = it.findViewById<TextView>(R.id.title_textView)
+            val author = it.findViewById<TextView>(R.id.author_textView)
+            (requireActivity() as MainActivity).bookViewModel.getSelectedBook().observe(viewLifecycleOwner){
+                title.text = title.toString()
+                title.text = author.toString()
 
-
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bookViewModel.getSelectedBook().observe(MainActivity()) {
 
-//            fun onItemClicked(book: BookList) {
-//                bookViewModel.SelectedBook(book)
-//            }
-//            childFragmentManager.beginTransaction()
-//                .replace(R.id.fragmentContainerView2, BookPlayerFragment())
-//                .commit()
+        //bookViewModel.getSelectedBook().observe(MainActivity()) {
+            val clickEvent = { book: Book -> BookViewModel() }
+
+
         }
-
     }
 
-}

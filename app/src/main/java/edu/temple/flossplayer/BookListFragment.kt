@@ -12,19 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 class BookListFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
-    //private lateinit var bookViewModel: BookViewModel
     private val ITEM_KEY = "books"
     lateinit var book: Array<BookList>
     var onClick = {book: Book ->
-
+        (requireActivity() as MainActivity.BookSelection).onBookSelected()
+        (requireActivity() as MainActivity).bookViewModel.SelectedBook(BookList())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //view model
-        //bookViewModel = ViewModelProvider(requireActivity()).get(BookViewModel::class.java)
-
         arguments?.let {
         }
     }
