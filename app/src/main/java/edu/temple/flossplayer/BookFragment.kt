@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 open class BookFragment : Fragment() { //this is child fragment
@@ -38,9 +39,8 @@ open class BookFragment : Fragment() { //this is child fragment
             val title = it.findViewById<TextView>(R.id.title_textView)
             val author = it.findViewById<TextView>(R.id.author_textView)
             (requireActivity() as MainActivity).bookViewModel.getSelectedBook().observe(viewLifecycleOwner){
-                title.text = title.toString()
-                title.text = author.toString()
-
+                title.text = it.title
+                author.text = it.author
             }
         }
     }
