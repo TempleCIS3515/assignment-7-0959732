@@ -39,20 +39,16 @@ open class BookFragment : Fragment() { //this is child fragment
             val title = it.findViewById<TextView>(R.id.title_textView)
             val author = it.findViewById<TextView>(R.id.author_textView)
             (requireActivity() as MainActivity).bookViewModel.getSelectedBook().observe(viewLifecycleOwner){
-                title.text = it.title
-                author.text = it.author
+                title.text = title.toString()
+                author.text = author.toString()
             }
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        //bookViewModel.getSelectedBook().observe(MainActivity()) {
             val clickEvent = { book: Book -> BookViewModel() }
-
-
         }
     }
+
 

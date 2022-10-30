@@ -14,8 +14,9 @@ class BookListFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     private val ITEM_KEY = "books"
     lateinit var book: Array<BookList>
+
     var onClick = {book: Book ->
-        (requireActivity() as MainActivity.BookSelection).onBookSelected()
+        (requireActivity() as BookSelection).onBookSelected()
         (requireActivity() as MainActivity).bookViewModel.SelectedBook(BookList())
     }
 
@@ -45,6 +46,10 @@ class BookListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val clickEvent = { book: Book -> BookViewModel()}
+    }
 
+    interface BookSelection
+    {
+        fun onBookSelected()
     }
 }

@@ -9,15 +9,27 @@ class BookViewModel : ViewModel() {
     val selectedBook : MutableLiveData<BookList> by lazy {
         MutableLiveData<BookList>()
     }
-    lateinit var booklist: BookList
+
+    private var selectedIndex = -1
 
 
-    fun SelectedBook(book: BookList) {
+    fun SelectedBook(selectedBook: BookList) {
 
-        selectedBook.value = book
+        this.selectedBook.value = selectedBook
     }
 
-    fun getSelectedBook() : LiveData<BookList>{
+    fun getBookList() : LiveData<BookList>{
         return selectedBook
+    }
+
+    fun setSelectedIndex(position : Int) {
+        this.selectedIndex = position
+    }
+
+    fun getSelectedBook(): Book {
+        return selectedBook.value!!.get(selectedIndex)
+    }
+    fun getSelectedIndex(): Int{
+        return selectedIndex
     }
 }

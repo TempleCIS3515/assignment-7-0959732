@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BookListFragment.BookSelection {
 
     lateinit var bookViewModel: BookViewModel
     var landscape = false
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         myBooklist.add(Book("Mariana Zapata", "All Rhoades Lead Here"))
 
         bookViewModel = ViewModelProvider(this)[BookViewModel::class.java]
-        bookViewModel.booklist = myBooklist
+        //bookViewModel.selectedBook = myBooklist
 
         if (savedInstanceState == null) {
             val bookListFragment = BookListFragment()
@@ -59,12 +59,7 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
-
-
-        interface BookSelection {
-            fun onBookSelected()
-        }
-    }
+}
 
 
 
