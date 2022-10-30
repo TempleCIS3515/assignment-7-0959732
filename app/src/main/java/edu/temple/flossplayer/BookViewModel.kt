@@ -10,26 +10,27 @@ class BookViewModel : ViewModel() {
         MutableLiveData<BookList>()
     }
 
-    private var selectedIndex = -1
+    private var selectedIndex = MutableLiveData<Int>(-1)
 
 
-    fun SelectedBook(selectedBook: BookList) {
+    fun setBookList(_bookList: BookList) {
 
-        this.selectedBook.value = selectedBook
+        this.selectedBook.value = _bookList
     }
 
     fun getBookList() : LiveData<BookList>{
         return selectedBook
     }
 
-    fun setSelectedIndex(position : Int) {
-        this.selectedIndex = position
+    fun setSelectedIndex(_position : Int) {
+        this.selectedIndex = MutableLiveData<Int>(_position)
     }
 
     fun getSelectedBook(): Book {
-        return selectedBook.value!!.get(selectedIndex)
+        return selectedBook.value!!.get(selectedIndex.value!!)
     }
-    fun getSelectedIndex(): Int{
+
+    fun getSelectedIndex(): LiveData<Int>{
         return selectedIndex
     }
 }

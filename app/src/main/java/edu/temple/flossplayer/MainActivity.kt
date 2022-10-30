@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelection {
         setContentView(R.layout.activity_main)
 
         landscape = (findViewById<FragmentContainerView>(R.id.container_2) != null)
-        //bookViewModel.SelectedBook(this,
 
         object {
             val ITEM_KEY = "key"
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelection {
         myBooklist.add(Book("Mariana Zapata", "All Rhoades Lead Here"))
 
         bookViewModel = ViewModelProvider(this)[BookViewModel::class.java]
-        //bookViewModel.selectedBook = myBooklist
+        bookViewModel.setBookList(myBooklist)
 
         if (savedInstanceState == null) {
             val bookListFragment = BookListFragment()
@@ -56,6 +55,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelection {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container_2, BookPlayerFragment())
+                .addToBackStack(null)
                 .commit()
         }
     }

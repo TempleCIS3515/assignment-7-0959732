@@ -14,16 +14,18 @@ class BookListFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     private val ITEM_KEY = "books"
     lateinit var book: Array<BookList>
+    private lateinit var bookViewModel: BookViewModel
+    private var bookList: BookList = BookList()
 
-    var onClick = {book: Book ->
+
+    var onClick = {position: Int ->
+        bookViewModel.setSelectedIndex(position)
         (requireActivity() as BookSelection).onBookSelected()
-        (requireActivity() as MainActivity).bookViewModel.SelectedBook(BookList())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
+        bookViewModel = ViewModelProvider(requireActivity())[BookViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -31,22 +33,22 @@ class BookListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book_list, container, false).also {
-            //recycler view
-            recyclerView = it.findViewById<RecyclerView>(R.id.booklist_recyclerView)
-
-            // to layout manager
-            recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
-            // to image adapter
-            recyclerView.adapter = BookAdapter((requireActivity()as MainActivity).bookViewModel.booklist,onClick)
-
-        }
+        return inflater.inflate(R.layout.fragment_book_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val clickEvent = { book: Book -> BookViewModel()}
+        bookViewModel.getBookList().observe(requireActivity()) {
+            (recyclerView.adapter as BookAdapter).setData(it)
+        }
+        recyclerView = view.findViewById(R.id.booklist_recyclerView)
+
+        // to layout manager
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
+        // to image adapter
+        recyclerView.adapter = BookAdapter(bookList,onClick)
+
     }
 
     interface BookSelection

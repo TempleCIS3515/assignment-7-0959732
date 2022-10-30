@@ -27,7 +27,7 @@ open class BookFragment : Fragment() { //this is child fragment
     }
 
     fun onItemClicked(book: BookList) {
-        bookViewModel.SelectedBook(book)
+        bookViewModel.setBookList(book)
     }
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ open class BookFragment : Fragment() { //this is child fragment
         return inflater.inflate(R.layout.fragment_book, container, false).also {
             val title = it.findViewById<TextView>(R.id.title_textView)
             val author = it.findViewById<TextView>(R.id.author_textView)
-            (requireActivity() as MainActivity).bookViewModel.getSelectedBook().observe(viewLifecycleOwner){
+            (requireActivity() as MainActivity).bookViewModel.getBookList().observe(requireActivity()){
                 title.text = title.toString()
                 author.text = author.toString()
             }
