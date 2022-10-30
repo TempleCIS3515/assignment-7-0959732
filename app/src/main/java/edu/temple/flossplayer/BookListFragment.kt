@@ -39,6 +39,7 @@ class BookListFragment : Fragment() {
             recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
             // to image adapter
             recyclerView.adapter = BookAdapter((requireActivity()as MainActivity).bookViewModel.booklist,onClick)
+
         }
     }
 
