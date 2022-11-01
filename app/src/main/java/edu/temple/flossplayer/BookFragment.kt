@@ -1,11 +1,13 @@
 package edu.temple.flossplayer
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 
 open class BookFragment : Fragment() { //this is child fragment
@@ -42,14 +44,13 @@ open class BookFragment : Fragment() { //this is child fragment
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-    {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val clickEvent = { book: Book -> BookViewModel() }
 
         bookViewModel.getSelectedIndex().observe(viewLifecycleOwner)
         {
-            view.findViewById<View>(R.id.container_2)
+            view.findViewById<FragmentContainerView>(R.id.book_layout)
         }
     }
 }
