@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 open class BookFragment : Fragment() { //this is child fragment
 
     lateinit var title_textView: TextView
     lateinit var author_textView: TextView
+    lateinit var recyclerView: RecyclerView
     lateinit var bookViewModel: BookViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,12 +49,14 @@ open class BookFragment : Fragment() { //this is child fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val clickEvent = { book: Book -> BookViewModel() }
-
-        bookViewModel.getSelectedIndex().observe(viewLifecycleOwner)
-        {
-            view.findViewById<FragmentContainerView>(R.id.book_layout)
+        val clickEvent = { position: Int -> BookViewModel().selectedBook
+            bookViewModel.setSelectedIndex(position)
         }
+        bookViewModel.getSelectedIndex().observe(requireActivity()as MainActivity)
+        {
+            clickEvent(it)
+        }
+
     }
 }
 
