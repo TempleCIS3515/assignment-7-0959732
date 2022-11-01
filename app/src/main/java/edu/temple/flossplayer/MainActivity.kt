@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelection {
         if (!landscape) {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.container_2, BookPlayerFragment())
+                .replace(R.id.container_1, BookPlayerFragment())
                 .addToBackStack(null)
                 .commit()
         }
