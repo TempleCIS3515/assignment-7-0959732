@@ -1,5 +1,6 @@
 package edu.temple.flossplayer
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ class BookAdapter(_books: BookList,_clickEvent: (Int)->Unit) : RecyclerView.Adap
     var booklist=_books
     val bookclick = _clickEvent
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(_bookList: BookList) {
         booklist = _bookList
         this.notifyDataSetChanged()

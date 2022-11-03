@@ -16,14 +16,8 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelection {
 
         landscape = (findViewById<FragmentContainerView>(R.id.container_2) != null)
 
-        object {
-            val ITEM_KEY = "key"
-        }
-
-
         // Set the title for the activity.
         supportActionBar?.title = "FlossPlayer"
-
 
         //instance of BookList class
         val myBooklist = BookList()
@@ -60,6 +54,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelection {
         }
     }
 }
+
 
 
 
